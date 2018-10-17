@@ -1,0 +1,36 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowUserToSeeBucketListInTheConsole",
+      "Action": ["s3:ListAllMyBuckets", "s3:GetBucketLocation"],
+      "Effect": "Allow",
+      "Resource": [
+        "arn:aws:s3:::*"
+      ]
+    },
+    {
+      "Sid": "AllowEngineeringReadOnlyAccessToXMLbucket",
+      "Effect": "Allow",
+      "Action": [
+        "s3:ListBucket"
+      ],
+      "Resource": [
+        "arn:aws:s3:::${environment}-dev-xml-transfer-*"
+      ]
+    },
+    {
+      "Sid": "AllowEngineeringWriteAccessToXMLbucket",
+      "Effect": "Allow",
+      "Action": [
+        "s3:PutObject",
+        "s3:GetObject",
+        "s3:DeleteObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::${environment}-dev-xml-transfer-*",
+        "arn:aws:s3:::${environment}-dev-xml-transfer-*/*"
+      ]
+    }
+  ]
+}
